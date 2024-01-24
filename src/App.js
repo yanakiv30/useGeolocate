@@ -28,19 +28,20 @@ export default function App() {
 
   return (
     <div>
-      <button>onClick{getPosition} disabled={isLoading}</button>
+      <button onClick={getPosition} disabled={isLoading}>
+        Get my position
+      </button>
 
       {isLoading && <p>Loading position...</p>}
       {error && <p>{error}</p>}
       {!isLoading && !error && lat && lng && (
-        <p>
-          
+        <p>Your GPS position: {" "}
+        <a target = "blank" rel = "noreferrer" href={`https://www.openstreetmap.org/#map=16/${lat}/${lng}`}>
+           {lat} ,{lng}
+        </a>          
         </p>
-      )
-      
-      
-      
-      }
+      )}
+      <p>You requested position {countClicks} times</p>
     </div>
   );
 }
